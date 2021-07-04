@@ -11,7 +11,7 @@
     {% for post in post %}
         <article>
             <h1><a href="{{ path('app_post_show', {id: post.id}) }}"> {{ post.title }} </a></h1>
-            <p>Publié il y'a {{ post.createdAt|ago }}</p>
+            <p>Publié : {{ post.createdAt|ago }}</p>
             <p> {{ post.content|u.truncate(255, '...', false) }} </p>
         </article>
     {% endfor %}
