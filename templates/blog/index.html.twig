@@ -10,7 +10,7 @@
 
     {% for post in post %}
         <article>
-            <h1> {{ post.title }} </h1>
+            <h1><a href="{{ path('app_post_show', {id: post.id}) }}"> {{ post.title }} </a></h1>
             <p> {{ post.content }} </p>
         </article>
     {% endfor %}

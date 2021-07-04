@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Inter-Sciences : Blog'%}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>{{ post.title }}</h1>
+    <p>Créele {{ post.createdAt|date("m/d/Y") }} et mis-à-jour le {{ post.updatedAt|date("m/d/Y") }}</p>
+    <p>{{ post.content }}</p>
+
+    <a href="{{ path("app_post_edit", {id: post.id}) }}">Modifier</a>
+</div>
+{% endblock %}

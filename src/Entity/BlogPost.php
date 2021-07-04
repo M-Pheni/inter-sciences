@@ -2,15 +2,18 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\Timestampable;
 use App\Repository\BlogPostRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=BlogPostRepository::class)
  * @ORM\Table(name="blog_posts")
+ * @ORM\HasLifecycleCallbacks
  */
 class BlogPost
 {
+    use Timestampable;
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
