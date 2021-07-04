@@ -68,7 +68,7 @@ class BlogController extends AbstractController
             return $this->redirectToRoute('app_blog_index');
         }
 
-        return $this->render('blog/create.html.twig', [
+        return $this->render('blog/edit.html.twig', [
             'post' => $post,
             'form' => $form->createView()
         ]);
