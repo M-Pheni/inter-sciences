@@ -9,6 +9,16 @@
     <p>Créele {{ post.createdAt|date("m/d/Y") }} et mis-à-jour le {{ post.updatedAt|date("m/d/Y") }}</p>
     <p>{{ post.content }}</p>
 
-    <a href="{{ path("app_post_edit", {id: post.id}) }}">Modifier</a>
+    <a href="{{ path("app_post_edit", {id: post.id}) }}">Modifier</a> |
+    <a href="#"
+        onclick="event.preventDefault(); confirm('Etez-vous sur de vouloire supprimer cet article ?') && document.getElementById('js-post-delete-form').submit();"
+        class="btn btn-light">Supprimer</a>
+
+    <form id="js-post-delete-form" action="{{ path('app_post_delete', {id: post.id}) }}" method="post"
+        style="display: none;">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token('post_deletion_' ~ post.id) }}">
+        <input type="hidden" name="_method" value="DELETE">
+    </form>
+    </div>
 </div>
 {% endblock %}

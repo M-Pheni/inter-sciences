@@ -73,4 +73,19 @@ class BlogController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    #[Route('/article/{id<[0-9]+>}/supprimer', name: 'app_post_delete', methods: ['GET', 'POST'])]
+    public function delete(Request $request, BlogPost $post, EntityManagerInterface $em): Response
+    {
+        // $this->denyAccessUnlessGranted('PIN_MANAGE', $post);
+
+        if ($this->isCsrfTokenValid('post_deletion_' . $post->getId(), $request->request->get('csrf_token'))) {
+            $em->remove($post);
+            $em->flush();
+
+            $this->addFlash('info', 'Articles supprimer avec succes !');
+        }
+
+        return $this->redirectToRoute('app_blog_index');
+    }
 }
