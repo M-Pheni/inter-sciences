@@ -37,7 +37,7 @@ a{
     }
 
     img {
-        @extend .mb-2, .rounded, .shadow, .img-thumbnail;
+        @extend .mb-2, .rounded;
     }
 }
 
