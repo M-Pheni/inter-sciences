@@ -43,7 +43,7 @@ class BlogPost
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      * @Vich\UploadableField(mapping="post_image", fileNameProperty="imageName")
-     * @Assert\Image(maxSize="1M")
+     * @Assert\Image(maxSize="5M")
      * 
      * @var File|null
      */
