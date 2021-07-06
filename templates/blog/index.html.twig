@@ -5,15 +5,33 @@
 {% block body %}
 
 <div class="example-wrapper">
-    <h1>Blog <i class='bx bxs-book-add'></i> </h1>
-    <h2> {{ pluralize(post|length, 'Article')}}</h2>
-
-    {% for post in post %}
-        <article>
-            <h1><a href="{{ path('app_post_show', {id: post.id}) }}"> {{ post.title }} </a></h1>
-            <p>Publié : {{ post.createdAt|ago }}</p>
-            <p> {{ post.content|u.truncate(255, '...', false) }} </p>
-        </article>
-    {% endfor %}
+    <h1 class="mb-4 text-center text-muted"> Blog </h1>
+    {% if post|length > 0 %}
+        {% for row in post|batch(3) %}
+                <div class="row mb-5">
+                {% for post in row %}
+                    <div class="col-md-4">
+                        <article class="pin bg-white rounded shadow">
+                            <div class="mw-100 rounded-top overflow-hidden">
+                                <a href="{{ path('app_post_show', {id: post.id}) }}">
+                                    <img src="{{ (post.imageName ? vich_uploader_asset(post) : asset('build/images/placeholder.jpg')) | imagine_filter('squared_thumbnail_medium') }}" alt="{{ post.title }}" class="w-100" />
+                                </a>
+                            </div>
+                            <h2 class="ms-3 h5 pt-3"><a href="{{ path('app_post_show', {id: post.id}) }}" class="text-secondary text-decoration-none">{{ post.title }}</a></h2>
+                            <p class="ps-3 text-muted">
+                                <small>
+                                    <i class='bx bxs-user-circle'> AUTHOR </i> <br>
+                                    <i class='bx bx-time'> {{ post.createdAt|ago }} </i>
+                                </small>
+                            </p>
+                            <p class="ps-3 pb-3"> {{ post.content|u.truncate(255, '...', false) }} </p>
+                        </article>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="mt-5 h1 text-center">Aucun article disponible pour le moment, revenez plus tart.</p>
+    {% endif %}
 </div>
 {% endblock %}
