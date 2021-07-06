@@ -9,7 +9,7 @@
     <p>Créele {{ post.createdAt|date("m/d/Y") }} et mis-à-jour le {{ post.updatedAt|date("m/d/Y") }}</p>
     <p>{{ post.content }}</p>
 
-    <a href="{{ path("app_post_edit", {id: post.id}) }}">Modifier</a> |
+    <a class="btn btn-light" href="{{ path("app_post_edit", {id: post.id}) }}">Modifier</a> |
     <a href="#"
         onclick="event.preventDefault(); confirm('Etez-vous sur de vouloire supprimer cet article ?') && document.getElementById('js-post-delete-form').submit();"
         class="btn btn-light">Supprimer</a>

@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BlogController extends AbstractController
 {
-    #[Route('/blog', name: 'app_blog_index')]
+    #[Route('/blog', name: 'app_blog')]
     public function index(BlogPostRepository $postRepos): Response
     {
         $post = $postRepos->findAll();
@@ -42,7 +42,7 @@ class BlogController extends AbstractController
 
             $this->addFlash('success', 'Article crée avec success');
 
-            return $this->redirectToRoute('app_blog_index');
+            return $this->redirectToRoute('app_blog');
         }
 
         return $this->render('blog/create.html.twig', [
@@ -65,7 +65,7 @@ class BlogController extends AbstractController
 
             $this->addFlash('success', 'Article mis-à-jours avec success');
 
-            return $this->redirectToRoute('app_blog_index');
+            return $this->redirectToRoute('app_blog');
         }
 
         return $this->render('blog/edit.html.twig', [
@@ -86,6 +86,6 @@ class BlogController extends AbstractController
             $this->addFlash('info', 'Articles supprimer avec succes !');
         }
 
-        return $this->redirectToRoute('app_blog_index');
+        return $this->redirectToRoute('app_blog');
     }
 }

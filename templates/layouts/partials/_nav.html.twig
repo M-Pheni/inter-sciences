@@ -1,29 +1,23 @@
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    .alert {
-        padding: 10px;
-        color: white;
-        text-align: center;
-        margin: 0;
-        border: none;
-        border-radius: 0;
-    }
+<nav class="navbar navbar-expand-sm navbar-light bg-light mb-4">
+	<div class="container">
+		<a class="navbar-brand" href="{{ path('app_home') }}">Inter-Scinces</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-    .alert-success {
-        background-color: green;
-    }
-
-    .alert-error {
-        background-color: red;
-    }
-
-    .alert-info {
-        background-color: blue;
-    }
-</style>
-<ul>
-    <li><a href="{{ path("app_home")}}"> Accueil </a></li>
-    <li><a href="{{ path("app_blog_index")}}"> Blog </a></li>
-    <li><a href="{{ path("app_post_create")}}"> Créez un article </a></li>
-</ul>
+		<div class="collapse navbar-collapse" id="navbarsExample03">
+			<ul class="navbar-nav ml-auto">
+				
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_blog') }}">Blog</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_post_create') }}">Créez un article</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
