@@ -23,6 +23,10 @@
 /public/media/cache/
 ###< liip/imagine-bundle ###
 
+###> custom app ignores ###
+/public/uploads/
+### end custom app ignores ###
+
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
 /public/build/

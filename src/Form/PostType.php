@@ -6,6 +6,7 @@ use App\Entity\BlogPost;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class PostType extends AbstractType
 {
@@ -13,6 +14,13 @@ class PostType extends AbstractType
     {
         $builder
             ->add('title')
+            ->add('imageFile', VichImageType::class, [
+                'label' => 'Image de l\'article',
+                'required' => false,
+                'allow_delete' => true,
+                'download_uri' => false,
+                //'imagine_pattern' => 'squared_thumbnail_small'
+            ])
             ->add('content')
             //->add('createdAt')
             //->add('updatedAt')
